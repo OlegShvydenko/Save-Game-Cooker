@@ -146,9 +146,6 @@ def load_user(user_id):
     return db.session.query(User).get(user_id)
 
 
-def unauthorized_handler() -> Response:
-    return redirect(url_for("login123"))
-
 
 @app.before_first_request
 def create_tables():
