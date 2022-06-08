@@ -137,6 +137,7 @@ user_datastore = SQLAlchemyUserDatastore(db, User, Role)
 security = Security(app, user_datastore)
 
 manager = LoginManager(app)
+manager.init_app(app)
 manager.login_view = 'login123'
 manager.login_message = 'Войдите, чтобы попасть на эту страницу'
 
