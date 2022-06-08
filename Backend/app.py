@@ -64,10 +64,6 @@ app.config['SECURITY_PASSWORD_SALT'] = 'salt'
 app.config['SECURITY_PASSWORD_HASH'] = 'bcrypt'
 app.config['SECURITY_LOGIN_USER_TEMPLATE'] = 'login123.html'
 
-from flask import session
-app.config["SESSION_PERMANENT"] = True
-app.config["SESSION_TYPE"] = "filesystem"
-
 swagger_config = {
     "headers": [
     ],
