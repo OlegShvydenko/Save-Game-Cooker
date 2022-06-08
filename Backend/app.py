@@ -13,7 +13,7 @@ from flask_sqlalchemy import SQLAlchemy, Pagination
 
 import steam.webapi
 # import jwt
-from flask_login import login_required, logout_user, current_user, login_user, LoginManager, login_manager
+from flask_login import login_required, logout_user, current_user, login_user, LoginManager, login_manager, fresh_login_required
 from requests import Response
 from steam import steamid, webauth, webapi
 
@@ -197,7 +197,7 @@ def game_page(app_id, key=steam_web_api_key, l="russian"):
 
 # @swag_from("helper.yaml")
 @app.route('/helper', methods=['GET'])
-@login_required
+@fresh_login_required
 # @swag_from('helper.yml')
 def helper():
     all_genres = Genre.query.all()
@@ -222,7 +222,7 @@ def helper():
 
 
 @app.route('/profile', methods=['GET'])
-@login_required
+@fresh_login_required
 # @swag_from('profile.yaml')
 def profile():
     user = current_user
@@ -273,7 +273,7 @@ def registrate():
 
 # @swag_from("pass_change.yaml")
 @app.route('/pass-change', methods=['GET', 'POST'])
-@login_required
+@fresh_login_required
 # @swag_from('pass-change.yml')
 def pass_change():
     # should be --PUT--
@@ -292,13 +292,13 @@ def pass_change():
 
 
 @app.route('/logout')
-@login_required
+@fresh_login_required
 def logout():
     logout_user(current_user)
     return redirect(url_for('index'))
 
 @app.route('/admin')
-@login_required
+@fresh_login_required
 def admin():
     return render_template('admin.html')
 
