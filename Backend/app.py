@@ -254,7 +254,7 @@ def login123():
         user = User.query.filter_by(login_mail=email).first()
         if not user or not check_password_hash(user.pass_hash, password):
             flash('Please check your login details and try again.')
-        login_user(user)
+        login_user(user, remember=True)
         return redirect(url_for('profile'))
     # if the above check passes, then we know the user has the right credentials
     return render_template('login123.html', secret_key=app.secret_key)
