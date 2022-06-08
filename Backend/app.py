@@ -3,6 +3,7 @@ import os
 from os import path
 import json, requests
 from datetime import datetime
+import flask_login
 
 import sqlalchemy.orm
 from jinja2 import Environment
@@ -249,7 +250,7 @@ def login123():
         user = User.query.filter_by(login_mail=email).first()
         if not user or not check_password_hash(user.pass_hash, password):
             flash('Please check your login details and try again.')
-        login_user(user)
+        flask_login.login_user(user)
         return redirect(url_for('index'))
     # if the above check passes, then we know the user has the right credentials
     return render_template('login123.html', secret_key=app.secret_key)
