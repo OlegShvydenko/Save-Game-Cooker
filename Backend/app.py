@@ -136,12 +136,11 @@ user_datastore = SQLAlchemyUserDatastore(db, User, Role)
 security = Security(app, user_datastore)
 
 manager = LoginManager(app)
-login_manager = LoginManager(app)
-login_manager.login_view = 'login123'
-login_manager.login_message = 'Войдите, чтобы попасть на эту страницу'
+manager.login_view = 'login123'
+manager.login_message = 'Войдите, чтобы попасть на эту страницу'
 
 
-@login_manager.user_loader
+@manager.user_loader
 def load_user(user_id):
     return db.session.query(User).get(user_id)
 
