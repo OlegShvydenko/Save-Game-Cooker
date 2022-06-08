@@ -239,7 +239,7 @@ def authors():
 
 
 # @swag_from("login.yaml", methods=["GET", "POST"])
-@app.route('/login123', methods=['GET', 'POST'])
+@app.route('/login123', methods=['POST'])
 # @swag_from('login.yml')
 def login123():
     if request.method == "POST":
