@@ -299,8 +299,8 @@ def pass_change():
 @app.route('/logout')
 @login_required
 def logout():
-    return redirect(url_for('security.logout'))
-
+    logout_user(current_user)
+    return redirect(url_for('index'))
 
 @app.route('/admin')
 @login_required
