@@ -303,12 +303,6 @@ def admin():
     return render_template('admin.html')
 
 
-@app.after_request
-def add_header(response):
-    # response.cache_control.max_age = 1
-    return response
-
-
 # @app.errorhandler(NotFound)
 # def not_found(error):
 #     flash(error, 'error')
